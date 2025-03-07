@@ -5,6 +5,8 @@
  * Version: 1.1.0
  * Author: Arnel Go
  * Author URI: https://arnelgo.info/
+ * Plugin URI: https://github.com/wikiwyrhead/wordpress-dynamic-menu-anchor
+ * GitHub Plugin URI: https://github.com/wikiwyrhead/wordpress-dynamic-menu-anchor
  * Text Domain: wiki-dynamic-heading-anchors
  * Domain Path: /languages
  * License: GPL v2 or later
@@ -109,6 +111,9 @@ class Wiki_Dynamic_Heading_Anchors {
         
         // Enqueue frontend scripts.
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
+        
+        // Modify plugin row meta links.
+        add_filter( 'plugin_row_meta', array( $this, 'modify_plugin_row_meta' ), 10, 2 );
     }
 
     /**
@@ -1609,12 +1614,32 @@ class Wiki_Dynamic_Heading_Anchors {
      */
     public function add_settings_link( $links ) {
         $settings_link = '<a href="' . admin_url( 'options-general.php?page=wiki-dynamic-heading-anchors' ) . '">' . esc_html__( 'Settings', 'wiki-dynamic-heading-anchors' ) . '</a>';
-        $details_link = '<a href="https://github.com/wikiwyrhead/wiki-dynamic-heading-anchor-link" target="_blank">' . esc_html__( 'View Details', 'wiki-dynamic-heading-anchors' ) . '</a>';
+        $details_link = '<a href="https://github.com/wikiwyrhead/wordpress-dynamic-menu-anchor" target="_blank">' . esc_html__( 'View Details', 'wiki-dynamic-heading-anchors' ) . '</a>';
         
         array_unshift( $links, $settings_link );
         array_push( $links, $details_link );
         
         return $links;
+    }
+
+    /**
+     * Modify plugin row meta links
+     *
+     * @since 1.1.0
+     * @param array  $plugin_meta An array of the plugin's metadata.
+     * @param string $plugin_file Path to the plugin file relative to the plugins directory.
+     * @return array Modified plugin meta links.
+     */
+    public function modify_plugin_row_meta( $plugin_meta, $plugin_file ) {
+        if ( plugin_basename( __FILE__ ) === $plugin_file ) {
+            // Replace the "View details" link with GitHub repository
+            foreach ( $plugin_meta as $key => $meta ) {
+                if ( strpos( $meta, 'plugin-install.php?tab=plugin-information' ) !== false ) {
+                    $plugin_meta[$key] = '<a href="https://github.com/wikiwyrhead/wordpress-dynamic-menu-anchor" target="_blank">' . __( 'View Details', 'wiki-dynamic-heading-anchors' ) . '</a>';
+                }
+            }
+        }
+        return $plugin_meta;
     }
 }
 
