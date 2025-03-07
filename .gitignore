@@ -1,0 +1,71 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE Files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.phpstorm.meta.php
+
+# Windsurf IDE Files
+.windsurfrules
+.windsurfignore
+.windsurfhistory
+
+# Development and Build Files
+node_modules/
+bower_components/
+npm-debug.log
+yarn-error.log
+*.log
+*.bak
+*.tmp
+*.swp
+.sass-cache/
+.grunt/
+
+# Distribution Files
+*.zip
+*.tar.gz
+dist/
+build/
+assets/dist/
+
+# WordPress Development Environment
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+
+# Plugin Specific
+# Ignore minified files if you generate them during build
+*.min.js
+*.min.css
+*.pot
+*.mo
+*.po
+
+# Testing and Documentation
+.phpunit.result.cache
+phpunit.xml
+phpcs.xml
+.phpdoc/
+docs/
+
+# Composer
+vendor/
+composer.lock
+
+# NPM/Yarn
+package-lock.json
+yarn.lock
