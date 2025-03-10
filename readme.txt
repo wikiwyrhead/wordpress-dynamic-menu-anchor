@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/arnelborresgo
 Tags: menu, navigation, headings, anchors, table of contents, toc
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,8 @@ Wiki Dynamic Heading Anchors is a WordPress plugin that automatically adds headi
 * Smart heading tag detection
 * Support for Elementor and other page builders
 * Optimized performance
+* Enhanced security measures
+* Improved code efficiency
 
 ### How It Works
 
@@ -55,6 +57,7 @@ All changes are dynamic and don't modify your content in the database.
 4. Select which heading tags (H1-H6) to process
 5. Choose which post types should have the dynamic heading anchors feature
 6. Set a custom CSS class for menu items if desired
+7. Adjust the scroll offset value if you have a fixed header
 
 == Frequently Asked Questions ==
 
@@ -90,6 +93,10 @@ Yes, in the post editor metabox, you can select which menu to add the headings t
 
 Yes, the plugin is translation-ready and works with multilingual plugins.
 
+= What is the scroll offset setting used for? =
+
+The scroll offset setting allows you to adjust the vertical position when scrolling to an anchor. This is particularly useful if your site has a fixed header that would otherwise cover the heading when navigating to an anchor link.
+
 == Screenshots ==
 
 1. Plugin settings page
@@ -98,18 +105,28 @@ Yes, the plugin is translation-ready and works with multilingual plugins.
 
 == Changelog ==
 
-= 1.0.1 =
+= 1.1.1 =
+* Added enhanced security measures
+* Improved code efficiency and reduced JavaScript file size
+* Added customizable scroll offset for fixed headers
+* Standardized code formatting for better maintainability
+* Fixed minor bugs and improved compatibility with various themes
+* Optimized MutationObserver implementation for better performance
+
+= 1.1.0 =
+* Added intelligent heading tag detection for meta fields
+* Improved filtering of heading tags based on settings
+* Enhanced support for Elementor page builder
+* Optimized code for production environments
 * Fixed issue with H3 headings appearing when only H2 is enabled
-* Improved styling of admin interface
-* Added metabox for manually adding headings to menus
 
 = 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-This update fixes a bug with heading tag filtering and improves the admin interface.
+= 1.1.1 =
+This update includes enhanced security measures, improved code efficiency, customizable scroll offset for fixed headers, and minor bug fixes.
 
 == Additional Information ==
 
@@ -119,6 +136,7 @@ This update fixes a bug with heading tag filtering and improves the admin interf
 * Uses MutationObserver for handling dynamic content changes
 * jQuery smooth scrolling implementation
 * Smart content container detection
+* Optimized code structure for better performance
 
 = Credits =
 * Developed by [Arnel Go](https://arnelgo.info/)

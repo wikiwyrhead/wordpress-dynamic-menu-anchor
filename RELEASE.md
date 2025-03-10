@@ -1,10 +1,10 @@
-# Wiki Dynamic Heading Anchors - Release 1.1.0
+# Wiki Dynamic Heading Anchors - Release 1.1.1
 
 ![Wiki Dynamic Heading Anchors](images/AG%20Logo_1.jpg)
 
-## Initial Public Release
+## Security and Performance Update
 
-We're excited to announce the first public release of Wiki Dynamic Heading Anchors for WordPress! This plugin automatically adds heading tags from your content as submenu items in your WordPress navigation menu, creating a dynamic table of contents for your pages and posts.
+We're excited to announce the latest update to Wiki Dynamic Heading Anchors for WordPress! This release focuses on security enhancements, code optimization, and improved user experience with the addition of a customizable scroll offset feature.
 
 ## Key Features
 
@@ -15,14 +15,17 @@ We're excited to announce the first public release of Wiki Dynamic Heading Ancho
 - **Fixed Header Support**: Set scroll offset for fixed headers when navigating to anchors
 - **Smart Content Detection**: Intelligently detects headings in meta fields and Elementor content
 - **Dynamic Processing**: All changes are made dynamically without modifying your database content
+- **Enhanced Security**: Improved security measures to protect your WordPress site
+- **Optimized Code**: Streamlined JavaScript for better performance
 
 ## Technical Highlights
 
 - JavaScript-based dynamic heading ID generation
-- Uses MutationObserver for handling dynamic content changes
-- jQuery smooth scrolling implementation
+- Optimized MutationObserver implementation for handling dynamic content changes
+- jQuery smooth scrolling implementation with customizable offset
 - Smart content container detection
 - URL hash handling and scroll offset support
+- Standardized code formatting for better maintainability
 
 ## Installation
 
@@ -30,12 +33,21 @@ We're excited to announce the first public release of Wiki Dynamic Heading Ancho
 2. Upload the `wiki-dynamic-heading-anchors` folder to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Go to Settings > Wiki Dynamic Heading Anchors to configure the plugin
+5. Adjust the scroll offset value if you have a fixed header
 
 ## Documentation
 
 Complete documentation is available in the [README.md](README.md) file.
 
 ## Changelog
+
+### 1.1.1
+- Added enhanced security measures
+- Improved code efficiency and reduced JavaScript file size
+- Added customizable scroll offset for fixed headers
+- Standardized code formatting for better maintainability
+- Fixed minor bugs and improved compatibility with various themes
+- Optimized MutationObserver implementation for better performance
 
 ### 1.1.0
 - Added intelligent heading tag detection for meta fields
