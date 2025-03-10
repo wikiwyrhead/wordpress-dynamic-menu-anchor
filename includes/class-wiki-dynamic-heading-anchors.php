@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Main plugin class
  *
@@ -8,7 +9,7 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 
@@ -21,7 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    WikiDynamicHeadingAnchors
  * @subpackage WikiDynamicHeadingAnchors/includes
  */
-class Wiki_Dynamic_Heading_Anchors {
+class Wiki_Dynamic_Heading_Anchors
+{
 
 	/**
 	 * Plugin instance
@@ -65,8 +67,9 @@ class Wiki_Dynamic_Heading_Anchors {
 	 * @since  1.0.1
 	 * @return Wiki_Dynamic_Heading_Anchors
 	 */
-	public static function get_instance() {
-		if ( null === self::$instance ) {
+	public static function get_instance()
+	{
+		if (null === self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -77,10 +80,11 @@ class Wiki_Dynamic_Heading_Anchors {
 	 *
 	 * @since 1.0.1
 	 */
-	private function __construct() {
-		$this->settings = get_option( 'wiki_heading_anchors_settings', array(
+	private function __construct()
+	{
+		$this->settings = get_option('wiki_heading_anchors_settings', array(
 			'heading_tag'    => 'h2',
-			'post_types'     => array( 'post', 'page' ),
+			'post_types'     => array('post', 'page'),
 			'menu_class'     => 'wiki-heading-anchor',
 			'scroll_offset'  => 100
 		));
@@ -92,13 +96,14 @@ class Wiki_Dynamic_Heading_Anchors {
 	 * @since  1.0.1
 	 * @return void
 	 */
-	public function init() {
+	public function init()
+	{
 		// Initialize admin and public classes
-		$this->admin  = new Wiki_Dynamic_Heading_Anchors_Admin( $this->settings );
-		$this->public = new Wiki_Dynamic_Heading_Anchors_Public( $this->settings );
+		$this->admin  = new Wiki_Dynamic_Heading_Anchors_Admin($this->settings);
+		$this->public = new Wiki_Dynamic_Heading_Anchors_Public($this->settings);
 
 		// Load text domain
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+		add_action('plugins_loaded', array($this, 'load_textdomain'));
 	}
 
 	/**
@@ -107,11 +112,12 @@ class Wiki_Dynamic_Heading_Anchors {
 	 * @since  1.0.1
 	 * @return void
 	 */
-	public function load_textdomain() {
+	public function load_textdomain()
+	{
 		load_plugin_textdomain(
 			'wiki-dynamic-heading-anchors',
 			false,
-			dirname( WDHA_PLUGIN_BASENAME ) . '/languages'
+			dirname(WDHA_PLUGIN_BASENAME) . '/languages'
 		);
 	}
 
@@ -121,7 +127,8 @@ class Wiki_Dynamic_Heading_Anchors {
 	 * @since  1.0.1
 	 * @return array
 	 */
-	public function get_settings() {
+	public function get_settings()
+	{
 		return $this->settings;
 	}
 }
