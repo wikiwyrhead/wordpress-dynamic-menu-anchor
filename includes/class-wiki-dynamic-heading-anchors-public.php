@@ -104,8 +104,11 @@ class Wiki_Dynamic_Heading_Anchors_Public
         $parent_exists = false;
 
         foreach ($menu_items as $item) {
-            // Compare URLs without trailing slashes
-            if (untrailingslashit($item->url) === untrailingslashit($current_url)) {
+            // Compare URLs without trailing slashes and protocol to ensure consistent matching
+            $menu_url = untrailingslashit(preg_replace('(^https?://)', '', $item->url));
+            $page_url = untrailingslashit(preg_replace('(^https?://)', '', $current_url));
+
+            if ($menu_url === $page_url) {
                 $parent_id = $item->ID;
                 $parent_exists = true;
                 break;
