@@ -106,8 +106,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Handle smooth scrolling to anchors
+  function handleHashNavigation() {
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      const targetElement = document.getElementById(hash);
+
+      if (targetElement) {
+        // Add a small delay to ensure the page is fully loaded
+        setTimeout(function () {
+          const scrollOffset = settings.scrollOffset || 100;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - scrollOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+
+          // Focus the element for accessibility
+          targetElement.setAttribute("tabindex", "-1");
+          targetElement.focus({ preventScroll: true });
+        }, 100);
+      }
+    }
+  }
+
   // Run initially
   addHeadingIds();
+
+  // Handle hash navigation after IDs are added
+  handleHashNavigation();
 
   // Watch for dynamic content changes
   if (window.MutationObserver) {
@@ -121,6 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (shouldProcess) {
         addHeadingIds();
+        // Check for hash navigation after dynamic content is processed
+        handleHashNavigation();
       }
     });
 
@@ -132,4 +164,40 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fallback for browsers without MutationObserver
     setInterval(addHeadingIds, 2000);
   }
+
+  // Handle clicks on anchor links for smooth scrolling
+  document.addEventListener("click", function (event) {
+    // Check if the clicked element is an anchor link
+    if (event.target.tagName === "A" && event.target.hash) {
+      const hash = event.target.hash.substring(1);
+      const targetElement = document.getElementById(hash);
+
+      // Only handle links to elements on the current page
+      if (
+        targetElement &&
+        (event.target.pathname === window.location.pathname ||
+          event.target.href.split("#")[0] ===
+            window.location.href.split("#")[0])
+      ) {
+        event.preventDefault();
+
+        const scrollOffset = settings.scrollOffset || 100;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - scrollOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+
+        // Update URL hash without jumping
+        history.pushState(null, null, event.target.href);
+
+        // Focus the element for accessibility
+        targetElement.setAttribute("tabindex", "-1");
+        targetElement.focus({ preventScroll: true });
+      }
+    }
+  });
 });
